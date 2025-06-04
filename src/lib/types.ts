@@ -1,8 +1,8 @@
+
 // Auth Types
 export type LoginRequest = {
-  username?: string; // Made optional to match UserDTO for /api/users/login
-  password?: string; // Made optional to match UserDTO for /api/users/login
-  email?: string; // For UserDTO based login/registration
+  username: string; 
+  password: string; 
 };
 
 export type AuthResponse = {
@@ -28,9 +28,10 @@ export type User = {
   // Add other fields if returned by /me or needed by frontend
 };
 
-export type UserDTO = { // For /me response
+export type UserDTO = { // For /me response and User registration
   username: string;
   email: string;
+  password?: string; // Password is for registration, not for /me response
 };
 
 // Election Types
@@ -110,3 +111,4 @@ export type BlockchainStatus = {
 // Voter Insights AI Flow Types (already defined in src/ai/flows/voter-insights-flow.ts)
 // Re-exporting them here for consistency if needed, or import directly from the flow file.
 export type { VoterInsightsInput, VoterInsightsOutput } from '@/ai/flows/voter-insights-flow';
+
