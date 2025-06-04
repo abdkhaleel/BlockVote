@@ -6,10 +6,11 @@ import type { BlockchainStatus, ApiResponse } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Loader2, AlertTriangle, CheckCircle, XCircle, DatabaseZap, Hammer } from 'lucide-react';
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const fetchBlockchainStatus = async (electionId: string, token: string | null): Promise<BlockchainStatus> => {
   // Note: The API GET /api/elections/{electionId}/blockchain-status requires an electionId.
@@ -175,10 +176,10 @@ export default function BlockchainAdminPage() {
             <Alert variant="destructive" className="mt-4">
               <AlertTriangle className="h-4 w-4" />
               <AlertTitle>Mining Error</AlertTitle>
-              <AlertDescription>{mineMutation.error.message}</AlertDescription>
+              <AlertDescription>{(mineMutation.error as any).data?.message || mineMutation.error.message}</AlertDescription>
             </Alert>
           )}
-           {mineMutation.isSuccess && (
+           {mineMutation.isSuccess && mineMutation.data && (
             <Alert variant="default" className="mt-4 border-green-500 text-green-700 bg-green-50">
               <CheckCircle className="h-4 w-4" />
               <AlertTitle>Mining Successful</AlertTitle>
