@@ -7,7 +7,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Loader2, AlertTriangle, CalendarDays, Info, UserCheck, UserX, Vote, BarChart3, CheckCircle, XCircle } from 'lucide-react';
+import { Loader2, AlertTriangle, CalendarDays, Info, UserCheck, UserX, Vote, BarChart3, CheckCircle, XCircle, Link } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
@@ -194,7 +194,7 @@ export default function ElectionDetailPage() {
             </div>
           )}
            {!canVote && election.active && !electionIsPast && user && eligibility && !eligibility.hasVoted && (
-             <Alert variant="warning" className="mt-6 border-yellow-500 text-yellow-700 bg-yellow-50">
+             <Alert variant="default" className="mt-6 border-yellow-500 text-yellow-700 bg-yellow-50">
                 <Info className="h-5 w-5"/>
                 <AlertTitle>Voting Not Possible</AlertTitle>
                 <AlertDescription>
