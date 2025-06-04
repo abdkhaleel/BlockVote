@@ -35,7 +35,7 @@ export default function ElectionDetailPage() {
   const params = useParams();
   const electionId = params.electionId as string;
   const { user, token, isLoading: authLoading } = useAuth();
-  const { toast } = useToast();
+  const { toast }: { toast: (options: { title: string; description?: string; variant?: string }) => void } = useToast();
   const queryClient = useQueryClient();
   const [selectedCandidateId, setSelectedCandidateId] = useState<string | null>(null);
 
