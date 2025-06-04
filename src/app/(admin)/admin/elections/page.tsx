@@ -6,7 +6,7 @@ import type { Election, ApiResponse } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Loader2, AlertTriangle, PlusCircle, Edit, Trash2, Power, PowerOff, Settings, ListFilter } from 'lucide-react';
+import { Loader2, AlertTriangle, PlusCircle, Edit, Trash2, Power, PowerOff, Settings, ListFilter, BarChart3 } from 'lucide-react';
 import Link from 'next/link';
 import { useToast } from '@/hooks/use-toast';
 import { format, parseISO } from 'date-fns';
@@ -161,6 +161,11 @@ export default function ManageElectionsPage() {
                      <Link href={`/admin/elections/${election.id}/voters`}>
                         <Button variant="ghost" size="icon" title="Manage Voters">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+                        </Button>
+                    </Link>
+                    <Link href={`/elections/${election.id}`} passHref>
+                        <Button variant="ghost" size="icon" title="View Results">
+                            <BarChart3 className="h-4 w-4 text-blue-500" />
                         </Button>
                     </Link>
                     {election.active ? (
